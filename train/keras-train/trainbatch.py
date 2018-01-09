@@ -14,8 +14,8 @@ from train import *
 model,basemodel = get_model(height=imgH, nclass=nclass)
 import os
 modelPath = '../pretrain-models/keras.hdf5'
-#if os.path.exists(modelPath):
-#       basemodel.load_weights(modelPath)
+if os.path.exists(modelPath):
+       basemodel.load_weights(modelPath)
         
 train_loader = torch.utils.data.DataLoader(
     train_dataset, batch_size=batchSize,
