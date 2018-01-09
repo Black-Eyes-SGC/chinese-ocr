@@ -14,7 +14,7 @@ import keras.backend as K
 trainroot = '../data/lmdb/train'
 valroot   = '../data/lmdb/val'
 batchSize = 32
-workers = 4
+workers = 1
 imgH = 32
 imgW = 256
 keep_ratio = False

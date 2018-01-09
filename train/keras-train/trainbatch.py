@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
+import tensorflow as tf
+import keras.backend.tensorflow_backend as ktf
+
+
+def get_session(gpu_fraction=0.333):
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_fraction,
+                                    allow_growth=True)
+    return tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
+ktf.set_session(get_session())
+
 from train import *
 model,basemodel = get_model(height=imgH, nclass=nclass)
 import os
 modelPath = '../pretrain-models/keras.hdf5'
-if os.path.exists(modelPath):
-       basemodel.load_weights(modelPath)
+#if os.path.exists(modelPath):
+#       basemodel.load_weights(modelPath)
         
-batchSize = 8
 train_loader = torch.utils.data.DataLoader(
     train_dataset, batch_size=batchSize,
     shuffle=True, sampler=sampler,
