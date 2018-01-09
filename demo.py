@@ -8,7 +8,8 @@ import time
 paths = glob('./test/*.*')
 
 if __name__ =='__main__':
-    im = Image.open(paths[1])
+    # im = Image.open(paths[1])
+    im = Image.open('/home/neoli365/jd/sceneReco/img/test.jpg')
     img = np.array(im.convert('RGB'))
     t = time.time()
     result,img = model.model(img,model='keras')

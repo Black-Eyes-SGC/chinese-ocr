@@ -6,14 +6,14 @@ modelPath = '../pretrain-models/keras.hdf5'
 if os.path.exists(modelPath):
        basemodel.load_weights(modelPath)
         
-batchSize = 32
+batchSize = 8
 train_loader = torch.utils.data.DataLoader(
     train_dataset, batch_size=batchSize,
     shuffle=True, sampler=sampler,
     num_workers=int(workers),
     collate_fn=dataset.alignCollate(imgH=imgH, imgW=imgW, keep_ratio=keep_ratio))
 
-testSize = 16
+testSize = int(batchSize / 2)
 #print test_dataset[0]
 test_loader = torch.utils.data.DataLoader(
     test_dataset, batch_size=testSize,
