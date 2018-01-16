@@ -25,10 +25,10 @@ def one_hot(text,characters=characters):
     text = text.decode('utf-8')
     label = np.zeros(len(text))
     for i,char in enumerate(text):
-    index = characters.find(char)
-    if index==-1:
-        index = characters.find(u' ')
-    label[i] = index
+        index = characters.find(char)
+        if index==-1:
+            index = characters.find(u' ')
+        label[i] = index
     return label
 
 n_len = 10  
