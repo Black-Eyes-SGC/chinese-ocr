@@ -21,14 +21,15 @@ keep_ratio = False
 random_sample = False
 
 
-def one_hot(text,length=10,characters=characters):
-     label = np.zeros(length)
-     for i,char in enumerate(text.decode('utf-8')):
-        index = characters.find(char)
-        if index==-1:
-            index = characters.find(u' ')
-        label[i] = index
-     return label
+def one_hot(text,characters=characters):
+    text = text.decode('utf-8')
+    label = np.zeros(len(text))
+    for i,char in enumerate(text):
+    index = characters.find(char)
+    if index==-1:
+        index = characters.find(u' ')
+    label[i] = index
+    return label
 
 n_len = 10  
 def gen(loader,flag='train'):
