@@ -58,7 +58,7 @@ for i in range(3):
                         loss = crrentLoss
                         path = 'save_model/model{}.h5'.format(loss)
                         print "save model:".format(path)
-                        basemodel.save(path)
+                        model.save(path)
 
                 j+=1
                 
