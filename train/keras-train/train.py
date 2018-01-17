@@ -58,9 +58,18 @@ else:
     sampler = None
 train_dataset = dataset.lmdbDataset(root=trainroot,target_transform=one_hot)
 
+'''
+#sampler (Sampler, optional) – defines the strategy to draw samples from the dataset. If specified, shuffle must be False. http://pytorch.org/docs/master/data.html
 train_loader = torch.utils.data.DataLoader(
     train_dataset, batch_size=batchSize,
-    shuffle=True, sampler=sampler,
+    shuffle=False, sampler=sampler,
+    num_workers=int(workers),
+    collate_fn=dataset.alignCollate(imgH=imgH, imgW=imgW, keep_ratio=keep_ratio))
+'''
+
+train_loader = torch.utils.data.DataLoader(
+    train_dataset, batch_size=batchSize,
+    shuffle=True,
     num_workers=int(workers),
     collate_fn=dataset.alignCollate(imgH=imgH, imgW=imgW, keep_ratio=keep_ratio))
 
