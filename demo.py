@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 import numpy as np
 import time
-paths = glob('./test/*.*')
+paths = glob('./img/test0*.*')
 
 if __name__ =='__main__':
     im = Image.open(paths[1])

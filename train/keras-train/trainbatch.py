@@ -33,6 +33,17 @@ j = 0
 crrentLoss = 1000
 loss = 1000
 interval  = 50
+
+
+def input_length(x):
+    return [0]
+
+
+def label_length(labels):
+    return [0]
+
+
+
 for i in range(3):
     for X,Y in train_loader:
                 X = X.numpy()

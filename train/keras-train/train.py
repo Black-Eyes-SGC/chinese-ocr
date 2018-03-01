@@ -12,6 +12,7 @@ nclass = len(characters)+1
 import keras.backend as K
 
 trainroot = '../data/lmdb/train'
+# trainroot = './data'
 valroot   = '../data/lmdb/val'
 batchSize = 32
 workers = 1
