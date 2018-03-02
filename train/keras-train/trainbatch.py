@@ -40,7 +40,10 @@ def input_length(x):
 
 
 def label_length(labels):
-    return [0]
+    res = []
+    for i in labels:
+        res.append(len(i))
+    return np.array(res)
 
 
 
@@ -50,7 +53,7 @@ for i in range(3):
                 X = X.reshape((-1,imgH,imgW,1))
                 Y = np.array(Y)
                 
-                Length = int(imgW/4)-2
+                Length = int(imgW/4)-2 # sampling length, need to read ctc function
                 batch = X.shape[0]
                 X,Y = [X, Y, np.ones(batch)*Length, np.ones(batch)*n_len], np.ones(batch)    
                 model.train_on_batch( X,Y)  
@@ -61,7 +64,7 @@ for i in range(3):
                    Y = Y.numpy()
                    Y = np.array(Y)
                    batch = X.shape[0]
-                   X,Y = [X, Y, np.ones(batch)*Length, np.ones(batch)*n_len], np.ones(batch) 
+                   X,Y = [X, Y, np.ones(batch)*Length, label_length(Y)], np.ones(batch) 
                    
                    crrentLoss = model.evaluate(X,Y)
                    print "step:{},loss:{},crrentLoss:{}".format(j,loss,crrentLoss)

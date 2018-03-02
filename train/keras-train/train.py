@@ -11,8 +11,8 @@ nclass = len(characters)+1
 
 import keras.backend as K
 
-trainroot = '../data/lmdb/train'
-# trainroot = './data'
+# trainroot = '../data/lmdb/train'
+trainroot = './data'
 valroot   = '../data/lmdb/val'
 batchSize = 32
 workers = 1
@@ -32,7 +32,7 @@ def one_hot(text,characters=characters):
         label[i] = index
     return label
 
-n_len = 10  
+n_len = 29 
 def gen(loader,flag='train'):
     while True:
         i =0 
